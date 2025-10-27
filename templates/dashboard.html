@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approver Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Approver Dashboard</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Job Title</th>
+                <th>Request Type</th>
+                <th>Environment</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for request in requests %}
+            <tr>
+                <td>{{ request.id }}</td>
+                <td>{{ request.first_name }} {{ request.last_name }}</td>
+                <td>{{ request.job_title }}</td>
+                <td>{{ request.request_type }}</td>
+                <td>{{ request.environment }}</td>
+                <td>{{ request.status }}</td>
+                <td>
+                    <a href="/approve/{{ request.id }}">Approve</a>
+                    <a href="/reject/{{ request.id }}">Reject</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Account Request</title>
+</head>
+<body>
+    <h1>User Account Request</h1>
+    <p><strong>First Name:</strong> {{ user_request.first_name }}</p>
+    <p><strong>Middle Initial:</strong> {{ user_request.middle_initial }}</p>
+    <p><strong>Last Name:</strong> {{ user_request.last_name }}</p>
+    <p><strong>Job Title:</strong> {{ user_request.job_title }}</p>
+    <p><strong>Division #:</strong> {{ user_request.division_no }}</p>
+    <p><strong>Employee ID #:</strong> {{ user_request.employee_id }}</p>
+    <p><strong>Supervisor Name:</strong> {{ user_request.supervisor_name }}</p>
+    <p><strong>Primary Work Location:</strong> {{ user_request.primary_work_location }}</p>
+    <p><strong>Work Phone:</strong> {{ user_request.work_phone }}</p>
+    <p><strong>Work Email:</strong> {{ user_request.work_email }}</p>
+    <p><strong>Request Type:</strong> {{ user_request.request_type }}</p>
+    <p><strong>Environment required:</strong> {{ user_request.environment }}</p>
+    <p><strong>Current user to model the User Account after?</strong> {{ user_request.model_user }}</p>
+    <p><strong>Justification:</strong> {{ user_request.justification }}</p>
+    <p><strong>User Security Groups by JOB FUNCTION:</strong> {{ user_request.security_group }}</p>
+</body>
+</html>
