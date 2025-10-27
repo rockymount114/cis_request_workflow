@@ -1,133 +1,300 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New User Request</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 0;
+        }
+        .form-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            padding: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .page-title {
+            color: #2d3748;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+        .page-subtitle {
+            color: #718096;
+            margin-bottom: 30px;
+        }
+        .section-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+        }
+        .section-title {
+            color: #4a5568;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .form-label {
+            color: #2d3748;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        .form-control, .form-select {
+            border: 1px solid #cbd5e0;
+            border-radius: 8px;
+            padding: 10px 15px;
+            transition: all 0.3s ease;
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        .btn-submit {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            padding: 12px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        .required-badge {
+            color: #e53e3e;
+            font-size: 0.85rem;
+        }
+    </style>
 </head>
 <body>
-    <h1>User Account Request</h1>
-    <form action="/submit" method="post">
+    <div class="container">
         <div class="form-container">
-            <div class="form-block">
-                <label for="first_name">First Name:</label>
-                <input type="text" id="first_name" name="first_name" required>
-
-                <label for="middle_initial">Middle Initial:</label>
-                <input type="text" id="middle_initial" name="middle_initial">
-
-                <label for="last_name">Last Name:</label>
-                <input type="text" id="last_name" name="last_name" required>
-
-                <label for="job_title">Job Title:</label>
-                <input type="text" id="job_title" name="job_title" required>
-
-                <label for="division_no">Division #:</label>
-                <input type="text" id="division_no" name="division_no" required>
-
-                <label for="employee_id">Employee ID #:</label>
-                <input type="text" id="employee_id" name="employee_id" required>
-
-                <label for="supervisor_name">Supervisor Name:</label>
-                <input type="text" id="supervisor_name" name="supervisor_name" required>
-
-                <label for="primary_work_location">Primary Work Location:</label>
-                <input type="text" id="primary_work_location" name="primary_work_location" required>
-
-                <label for="work_phone">Work Phone:</label>
-                <input type="text" id="work_phone" name="work_phone" required>
-
-                <label for="work_email">Work Email:</label>
-                <input type="email" id="work_email" name="work_email" required>
-            </div>
-
-            <div class="form-block">
-                <div>
-                    <label for="request_type">Request Type:</label>
-                    <select id="request_type" name="request_type" required>
-                        <option value="New user account">New user account</option>
-                        <option value="Modify an existing account">Modify an existing account</option>
-                        <option value="Lock the account">Lock the account</option>
-                    </select>
+            <h1 class="page-title text-center">
+                <i class="bi bi-person-plus-fill"></i> CIS User Account Request
+            </h1>
+            <p class="page-subtitle text-center">Please complete all required fields to submit your request</p>
+            
+            <form action="/submit" method="post">
+                <!-- Personal Information Section -->
+                <div class="section-card">
+                    <h2 class="section-title">
+                        <i class="bi bi-person-circle"></i> Personal Information
+                    </h2>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label for="first_name" class="form-label">
+                                First Name <span class="required-badge">*</span>
+                            </label>
+                            <input type="text" class="form-control" id="first_name" name="first_name" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="middle_initial" class="form-label">Middle Initial</label>
+                            <input type="text" class="form-control" id="middle_initial" name="middle_initial" maxlength="1">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="last_name" class="form-label">
+                                Last Name <span class="required-badge">*</span>
+                            </label>
+                            <input type="text" class="form-control" id="last_name" name="last_name" required>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <label for="environment">Environment required:</label>
-                    <select id="environment" name="environment" required>
-                        <option value="CIS PROD">CIS PROD</option>
-                        <option value="CIS TEST">CIS TEST</option>
-                        <option value="BOTH">BOTH</option>
-                    </select>
+
+                <!-- Employment Information Section -->
+                <div class="section-card">
+                    <h2 class="section-title">
+                        <i class="bi bi-briefcase-fill"></i> Employment Information
+                    </h2>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="job_title" class="form-label">
+                                Job Title <span class="required-badge">*</span>
+                            </label>
+                            <input type="text" class="form-control" id="job_title" name="job_title" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="division_no" class="form-label">
+                                Division # <span class="required-badge">*</span>
+                            </label>
+                            <input type="text" class="form-control" id="division_no" name="division_no" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="employee_id" class="form-label">
+                                Employee ID # <span class="required-badge">*</span>
+                            </label>
+                            <input type="text" class="form-control" id="employee_id" name="employee_id" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="supervisor_name" class="form-label">
+                                Supervisor Name <span class="required-badge">*</span>
+                            </label>
+                            <input type="text" class="form-control" id="supervisor_name" name="supervisor_name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="primary_work_location" class="form-label">
+                                Primary Work Location <span class="required-badge">*</span>
+                            </label>
+                            <input type="text" class="form-control" id="primary_work_location" name="primary_work_location" required>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <label for="model_user">Current user to model the User Account after?</label>
-            <input type="text" id="model_user" name="model_user"><br><br>
+                <!-- Contact Information Section -->
+                <div class="section-card">
+                    <h2 class="section-title">
+                        <i class="bi bi-telephone-fill"></i> Contact Information
+                    </h2>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="work_phone" class="form-label">
+                                Work Phone <span class="required-badge">*</span>
+                            </label>
+                            <input type="text" class="form-control" id="work_phone" name="work_phone" placeholder="(555) 123-4567" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="work_email" class="form-label">
+                                Work Email <span class="required-badge">*</span>
+                            </label>
+                            <input type="email" class="form-control" id="work_email" name="work_email" placeholder="name@example.com" required>
+                        </div>
+                    </div>
+                </div>
 
-            <label for="justification">Justification: What data do you need, and how do you intend to use it?</label><br>
-            <textarea id="justification" name="justification" rows="4" cols="50" required></textarea><br><br>
+                <!-- Request Details Section -->
+                <div class="section-card">
+                    <h2 class="section-title">
+                        <i class="bi bi-gear-fill"></i> Request Details
+                    </h2>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label for="request_type" class="form-label">
+                                Request Type <span class="required-badge">*</span>
+                            </label>
+                            <select class="form-select" id="request_type" name="request_type" required>
+                                <option value="New user account">New user account</option>
+                                <option value="Modify an existing account">Modify an existing account</option>
+                                <option value="Lock the account">Lock the account</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="environment" class="form-label">
+                                Environment Required <span class="required-badge">*</span>
+                            </label>
+                            <select class="form-select" id="environment" name="environment" required>
+                                <option value="CIS PROD">CIS PROD</option>
+                                <option value="CIS TEST">CIS TEST</option>
+                                <option value="BOTH">BOTH</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="model_user" class="form-label">Model User Account</label>
+                            <input type="text" class="form-control" id="model_user" name="model_user" placeholder="Optional">
+                        </div>
+                        <div class="col-12">
+                            <label for="justification" class="form-label">
+                                Justification <span class="required-badge">*</span>
+                            </label>
+                            <textarea class="form-control" id="justification" name="justification" rows="4" placeholder="What data do you need, and how do you intend to use it?" required></textarea>
+                        </div>
+                    </div>
+                </div>
 
-            <label for="security_group">User Security Groups by JOB FUNCTION:</label>
-            <select id="security_group" name="security_group" required>
-                <option value="(Building) Inspections Group">(Building) Inspections Group</option>
-                <option value="BSC Billing Workgroup">BSC Billing Workgroup</option>
-                <option value="BSC Billing Workgroup Supervisor">BSC Billing Workgroup Supervisor</option>
-                <option value="BSC Business Operations Manager">BSC Business Operations Manager</option>
-                <option value="BSC Business Services Center Supv">BSC Business Services Center Supv</option>
-                <option value="BSC Cashiering Supervisor">BSC Cashiering Supervisor</option>
-                <option value="BSC Cashiers">BSC Cashiers</option>
-                <option value="BSC Collections Supervisor">BSC Collections Supervisor</option>
-                <option value="BSC Collections Technician 1">BSC Collections Technician 1</option>
-                <option value="BSC Collections Technician 2">BSC Collections Technician 2</option>
-                <option value="BSC Customer Service Assistant">BSC Customer Service Assistant</option>
-                <option value="BSC Customer Service Clerk">BSC Customer Service Clerk</option>
-                <option value="BSC Customer Service Reps">BSC Customer Service Reps</option>
-                <option value="BSC Customer Service Supervisor">BSC Customer Service Supervisor</option>
-                <option value="BSC Field Svcs - (Generic) Meter Readers">BSC Field Svcs - (Generic) Meter Readers</option>
-                <option value="BSC Field Svcs - (Named) Meter Readers">BSC Field Svcs - (Named) Meter Readers</option>
-                <option value="BSC Field Svcs - Cust Svc DATA Tech">BSC Field Svcs - Cust Svc DATA Tech</option>
-                <option value="BSC Field Svcs - Cust Svc Tech 1">BSC Field Svcs - Cust Svc Tech 1</option>
-                <option value="BSC Field Svcs - Cust Svc Tech 2">BSC Field Svcs - Cust Svc Tech 2</option>
-                <option value="BSC Field Svcs Supervisor">BSC Field Svcs Supervisor</option>
-                <option value="BSC Field Svcs Supv / Route Mgmt">BSC Field Svcs Supv / Route Mgmt</option>
-                <option value="Community Code Administration">Community Code Administration</option>
-                <option value="Community Code Inspectors">Community Code Inspectors</option>
-                <option value="Energy Resources Area Lights Crew">Energy Resources Area Lights Crew</option>
-                <option value="Energy Resources Communications">Energy Resources Communications</option>
-                <option value="Energy Resources Dispatch">Energy Resources Dispatch</option>
-                <option value="Energy Resources Dispatch Supv">Energy Resources Dispatch Supv</option>
-                <option value="Energy Resources Electric Meter Shop">Energy Resources Electric Meter Shop</option>
-                <option value="Energy Resources Electric Meter Supervisor">Energy Resources Electric Meter Supervisor</option>
-                <option value="Energy Resources Engrg Manager">Energy Resources Engrg Manager</option>
-                <option value="Energy Resources Gas Distribution Engineer">Energy Resources Gas Distribution Engineer</option>
-                <option value="Energy Resources Gas Meter Shop">Energy Resources Gas Meter Shop</option>
-                <option value="Energy Resources GIS / Staking Engineers">Energy Resources GIS / Staking Engineers</option>
-                <option value="Energy Resources Load Management Supervisor">Energy Resources Load Management Supervisor</option>
-                <option value="Energy Resources Ops Manager">Energy Resources Ops Manager</option>
-                <option value="Engineering">Engineering</option>
-                <option value="Env Svcs">Env Svcs</option>
-                <option value="Env Svcs Admin Asst">Env Svcs Admin Asst</option>
-                <option value="Env Svcs Sanitation Rte Coord">Env Svcs Sanitation Rte Coord</option>
-                <option value="Env Svcs Superintendent">Env Svcs Superintendent</option>
-                <option value="Finance Administrative Asst">Finance Administrative Asst</option>
-                <option value="Finance Director">Finance Director</option>
-                <option value="Finance/Accounting">Finance/Accounting</option>
-                <option value="Finance/Accounting (Read-Only)">Finance/Accounting (Read-Only)</option>
-                <option value="Life Safety / EMS">Life Safety / EMS</option>
-                <option value="Read-Only Access">Read-Only Access</option>
-                <option value="Stormwater">Stormwater</option>
-                <option value="Technology Services Infinity Admin">Technology Services Infinity Admin</option>
-                <option value="Wastewater Treatment Plant">Wastewater Treatment Plant</option>
-                <option value="Water Distribution Supv">Water Distribution Supv</option>
-                <option value="Water Meter Shop">Water Meter Shop</option>
-                <option value="Water Meter Shop Supv">Water Meter Shop Supv</option>
-                <option value="Water Resources">Water Resources</option>
-                <option value="Water/Sewer Cust Svc Tech">Water/Sewer Cust Svc Tech</option>
-            </select><br><br>
+                <!-- Security Group Section -->
+                <div class="section-card">
+                    <h2 class="section-title">
+                        <i class="bi bi-shield-lock-fill"></i> Security Access
+                    </h2>
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label for="security_group" class="form-label">
+                                User Security Groups by Job Function <span class="required-badge">*</span>
+                            </label>
+                            <select class="form-select" id="security_group" name="security_group" required>
+                                <option value="" disabled selected>Select a security group...</option>
+                                <option value="(Building) Inspections Group">(Building) Inspections Group</option>
+                                <option value="BSC Billing Workgroup">BSC Billing Workgroup</option>
+                                <option value="BSC Billing Workgroup Supervisor">BSC Billing Workgroup Supervisor</option>
+                                <option value="BSC Business Operations Manager">BSC Business Operations Manager</option>
+                                <option value="BSC Business Services Center Supv">BSC Business Services Center Supv</option>
+                                <option value="BSC Cashiering Supervisor">BSC Cashiering Supervisor</option>
+                                <option value="BSC Cashiers">BSC Cashiers</option>
+                                <option value="BSC Collections Supervisor">BSC Collections Supervisor</option>
+                                <option value="BSC Collections Technician 1">BSC Collections Technician 1</option>
+                                <option value="BSC Collections Technician 2">BSC Collections Technician 2</option>
+                                <option value="BSC Customer Service Assistant">BSC Customer Service Assistant</option>
+                                <option value="BSC Customer Service Clerk">BSC Customer Service Clerk</option>
+                                <option value="BSC Customer Service Reps">BSC Customer Service Reps</option>
+                                <option value="BSC Customer Service Supervisor">BSC Customer Service Supervisor</option>
+                                <option value="BSC Field Svcs - (Generic) Meter Readers">BSC Field Svcs - (Generic) Meter Readers</option>
+                                <option value="BSC Field Svcs - (Named) Meter Readers">BSC Field Svcs - (Named) Meter Readers</option>
+                                <option value="BSC Field Svcs - Cust Svc DATA Tech">BSC Field Svcs - Cust Svc DATA Tech</option>
+                                <option value="BSC Field Svcs - Cust Svc Tech 1">BSC Field Svcs - Cust Svc Tech 1</option>
+                                <option value="BSC Field Svcs - Cust Svc Tech 2">BSC Field Svcs - Cust Svc Tech 2</option>
+                                <option value="BSC Field Svcs Supervisor">BSC Field Svcs Supervisor</option>
+                                <option value="BSC Field Svcs Supv / Route Mgmt">BSC Field Svcs Supv / Route Mgmt</option>
+                                <option value="Community Code Administration">Community Code Administration</option>
+                                <option value="Community Code Inspectors">Community Code Inspectors</option>
+                                <option value="Energy Resources Area Lights Crew">Energy Resources Area Lights Crew</option>
+                                <option value="Energy Resources Communications">Energy Resources Communications</option>
+                                <option value="Energy Resources Dispatch">Energy Resources Dispatch</option>
+                                <option value="Energy Resources Dispatch Supv">Energy Resources Dispatch Supv</option>
+                                <option value="Energy Resources Electric Meter Shop">Energy Resources Electric Meter Shop</option>
+                                <option value="Energy Resources Electric Meter Supervisor">Energy Resources Electric Meter Supervisor</option>
+                                <option value="Energy Resources Engrg Manager">Energy Resources Engrg Manager</option>
+                                <option value="Energy Resources Gas Distribution Engineer">Energy Resources Gas Distribution Engineer</option>
+                                <option value="Energy Resources Gas Meter Shop">Energy Resources Gas Meter Shop</option>
+                                <option value="Energy Resources GIS / Staking Engineers">Energy Resources GIS / Staking Engineers</option>
+                                <option value="Energy Resources Load Management Supervisor">Energy Resources Load Management Supervisor</option>
+                                <option value="Energy Resources Ops Manager">Energy Resources Ops Manager</option>
+                                <option value="Engineering">Engineering</option>
+                                <option value="Env Svcs">Env Svcs</option>
+                                <option value="Env Svcs Admin Asst">Env Svcs Admin Asst</option>
+                                <option value="Env Svcs Sanitation Rte Coord">Env Svcs Sanitation Rte Coord</option>
+                                <option value="Env Svcs Superintendent">Env Svcs Superintendent</option>
+                                <option value="Finance Administrative Asst">Finance Administrative Asst</option>
+                                <option value="Finance Director">Finance Director</option>
+                                <option value="Finance/Accounting">Finance/Accounting</option>
+                                <option value="Finance/Accounting (Read-Only)">Finance/Accounting (Read-Only)</option>
+                                <option value="Life Safety / EMS">Life Safety / EMS</option>
+                                <option value="Read-Only Access">Read-Only Access</option>
+                                <option value="Stormwater">Stormwater</option>
+                                <option value="Technology Services Infinity Admin">Technology Services Infinity Admin</option>
+                                <option value="Wastewater Treatment Plant">Wastewater Treatment Plant</option>
+                                <option value="Water Distribution Supv">Water Distribution Supv</option>
+                                <option value="Water Meter Shop">Water Meter Shop</option>
+                                <option value="Water Meter Shop Supv">Water Meter Shop Supv</option>
+                                <option value="Water Resources">Water Resources</option>
+                                <option value="Water/Sewer Cust Svc Tech">Water/Sewer Cust Svc Tech</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
 
-            <input type="submit" value="Submit Request">
+                <!-- Submit Button -->
+                <div class="text-end">
+                    <button type="submit" class="btn btn-primary btn-submit">
+                        <i class="bi bi-send-fill"></i> Submit Request
+                    </button>
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

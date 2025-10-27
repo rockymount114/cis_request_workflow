@@ -26,6 +26,6 @@ This file documents the steps taken by the Gemini agent to create a Flask applic
 
 ## 3. Frontend
 
-- **New User Request Form (`templates/index.html`):** An HTML form with all the fields from the provided PDF, including a dropdown for "User Security Groups by JOB FUNCTION". The form has been made more compact by grouping related fields into blocks and converting radio button selections for 'Request Type' and 'Environment required' into dropdown lists.
+- **New User Request Form (`templates/index.html`):** An HTML form with all the fields from the provided PDF, including a dropdown for "User Security Groups by JOB FUNCTION". The form has been made more compact by grouping related fields into blocks (personal/contact information, request type/environment, and now also model user/justification) and converting radio button selections for 'Request Type' and 'Environment required' into dropdown lists.
 - **Approver Dashboard (`templates/dashboard.html`):** An HTML page that displays a table of pending requests with their details and provides links to approve or reject each request.
 - **Styling (`static/style.css`):** A basic CSS file to provide some styling for the form and dashboard, updated to support the new compact form layout.
